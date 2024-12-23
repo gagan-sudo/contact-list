@@ -5,9 +5,13 @@ import { Close, Delete, Edit, Visibility } from '@mui/icons-material'
 import { ReactNode, useState } from 'react';
 import UserForm from '../../components/UserForm';
 import UserDetails from '../../components/UserDetails';
+import { toast } from 'react-toastify';
+import { useDispatch } from 'react-redux';
+import { deleteContactRequest} from '../../store/user/deletecontact/deleteSlice'
 
 function UsersActions({data}:{data:User}) {
 
+  const dispatch = useDispatch()
     const [userData]=useState(data)
     const [editBackdor,setEditBackdor]=useState(false)
     const [detailsBackdor,setDetailsBackdor]=useState(false)
@@ -66,7 +70,10 @@ function UsersActions({data}:{data:User}) {
         }}>
             <Visibility/>
         </IconButton>
-        <IconButton>
+        <IconButton onClick={()=>{
+          dispatch(deleteContactRequest(userData.id))
+
+        }}>
             <Delete/>
         </IconButton>
     </Stack>

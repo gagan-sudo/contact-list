@@ -10,8 +10,9 @@ import { toast } from 'react-toastify';
 import { Backdrop,  Stack } from '@mui/material';
 import { useState } from 'react';
 import UserForm from './UserForm';
+import { nanoid } from '@reduxjs/toolkit';
 const data = {
-  id: '',
+  id: nanoid(4),
   name: '',
   email: '',
   phone: '',
@@ -27,10 +28,12 @@ export default function Navigation() {
   const handleOpen = () => {
     setOpen(true);
   }
+
+  
   return (
     <>
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+    {/* <Box sx={{ flexGrow: 1 }}> */}
+      <AppBar position="sticky" >
         <Toolbar>
           <IconButton
             size="large"
@@ -52,11 +55,10 @@ export default function Navigation() {
           >Login</Button>
         </Toolbar>
       </AppBar>
-    </Box>
+    {/* </Box> */}
     <Backdrop 
      sx={(theme) => ({ color: '#fff', zIndex: theme.zIndex.drawer + 1 })}
      open={open}
-     onClick={handleClose}
     > 
       <Box bgcolor={"white"} p={2} borderRadius={3} width={{xs:'90%'}}>
       <Stack direction={"row"} alignItems={"center"} justifyContent={"space-between"} pb={2}>

@@ -1,7 +1,7 @@
 
 import API from "../../api/api";
 import {call, put, takeEvery} from 'redux-saga/effects'
-import { FETCH_USERS_API_DATA_REQUEST } from "./types";
+
 import { UsersDataActionTypes } from "./types";
 import { fetchUsersDataRequest, fetchUsersDataSuccess,fetchUsersDataFailure } from "./usersSlice";
 import { AnyAction } from "redux-saga";
@@ -9,7 +9,7 @@ import { AnyAction } from "redux-saga";
 
 function* usersApiDataFetch(){
     try{
-        put(fetchUsersDataRequest())
+        // put(fetchUsersDataRequest())
     const response:AnyAction = yield call(API.get,'/users')
     yield put(fetchUsersDataSuccess(response.data))
     }catch(error){
@@ -17,12 +17,13 @@ function* usersApiDataFetch(){
 
             yield put(fetchUsersDataFailure(error.message))
         }
-        // else{
-        //     yield put(fetchUsersApiDataFailure(error))
-        // }
+        else{
+            yield put(fetchUsersDataFailure("Unknown error"))
+        }
     }
 }
 
 export default function* usersSaga(){
-    yield takeEvery<UsersDataActionTypes>(FETCH_USERS_API_DATA_REQUEST,usersApiDataFetch)
+    yield takeEvery<UsersDataActionTypes>(fetchUsersDataRequest.type,usersApiDataFetch)
+    
 }

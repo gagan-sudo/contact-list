@@ -19,7 +19,8 @@ const usersSlice = createSlice({
        fetchUsersDataFailure:(state,action)=>{
          state.status='failed'
          state.error=action.payload
-       }
+       },
+       
     }
 })
 

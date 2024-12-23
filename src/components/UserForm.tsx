@@ -5,6 +5,8 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { User } from '../utils/types';
+import {addDataRequest} from '../store/user/addcontact/userSlice'
+import { useDispatch } from 'react-redux';
 
 
 // interface FormValues {
@@ -15,7 +17,8 @@ import { User } from '../utils/types';
 // }
 
 export default function UserForm({data}:{data:User}){
- 
+   const dispatch = useDispatch()
+
   const initialValues: User = {
     name: data.name,
     email: data.email,
@@ -39,7 +42,8 @@ export default function UserForm({data}:{data:User}){
     values: User,
     { setSubmitting }: FormikHelpers<User>
   ) => {
-    console.log('Form data', values);
+    // console.log('Form data', values);
+    dispatch(addDataRequest(values))
     setTimeout(() => {
       setSubmitting(false);
     }, 500);
@@ -52,7 +56,7 @@ export default function UserForm({data}:{data:User}){
       onSubmit={onSubmit}
     >
       {({ values, errors, touched, handleChange, handleBlur, isSubmitting }) => (
-        <Form>
+        <Form >
           <Box mb={2}>
             <TextField
               fullWidth
@@ -108,7 +112,8 @@ export default function UserForm({data}:{data:User}){
           </Box>
           
 
-          <Button color="primary" variant="contained" fullWidth type="submit" disabled={isSubmitting}>
+          <Button color="primary" variant="contained" fullWidth type="submit" disabled={isSubmitting}
+          >
             Submit
           </Button>
         </Form>
