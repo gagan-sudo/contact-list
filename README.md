@@ -1,50 +1,50 @@
-# React + TypeScript + Vite
+# Contact List
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a React App which is use to manage a contact list,
+Where we can add, remove, or update contact in list 
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## for using app 
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
+- Clone Repo.
 
 ```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+git clone "https://github.com/gagan-sudo/contact-list.git"
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- change dir. 
 
 ```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+cd contact-list
 ```
+
+- Install all dependencies
+
+```js
+npm install
+```
+
+- Run App in dev mode 
+
+```js
+npm run dev
+```
+
+## Dependencies use in this project
+
+- React 
+- React-Dom
+- Redux
+- React-Redux
+- Redux-Saga
+- React-Router-Dom
+- React-Toastify
+- Formik
+- Axios
+- Json-Server
+- Yup
+- @emotion/react
+- @emotion/styled
+- @mui/icons-material
+- @mui/material
+- @reduxjs/toolkit
