@@ -27,15 +27,15 @@ Where we can add, remove, or update contact in list
 - Run App in dev mode   
 
  ```js
-  npm run dev && npx json-server ./json/db.json
+  npm run dev 
  ```
 
 - Start static json server 
   open a different terminal in `json` folder 
 
-  ```js
+```js
    npx json-server ./db.json
-  ```
+```
 
 
 ## Dependencies use in this project
