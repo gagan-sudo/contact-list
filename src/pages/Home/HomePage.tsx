@@ -1,18 +1,20 @@
 import { useDispatch, useSelector } from "react-redux"
 import LayOut from "../../components/LayOut"
 import { useEffect } from "react"
-import { Container,Typography } from "@mui/material"
+import { Container, Typography } from "@mui/material"
 import UsersTable from "./UsersTable"
 import { toast } from "react-toastify"
-import { UpdateState,AddState, DeleteState,fetchUsersDataRequest } from "../../store"
+import { UpdateState, AddState, DeleteState, fetchUsersDataRequest } from "../../store"
+import { Users } from "../../utils/types"
 
 export default function HomePage() {
 
     const dispatch = useDispatch()
+    const contactsState = useSelector((state: { users: Users }) => state.users.data)
     const deleteState = useSelector((state: { delete: DeleteState }) => state.delete)
     const addState = useSelector((state: { add: AddState }) => state.add)
     const updateState = useSelector((state: { update: UpdateState }) => state.update)
-    // console.log(updateState)
+    // console.log(contactsState.length)
 
 
     // delete note notification
@@ -25,7 +27,7 @@ export default function HomePage() {
         dispatch(fetchUsersDataRequest())
     }, [dispatch, deleteState])
 
-     // add note notification
+    // add note notification
     useEffect(() => {
         if (addState.status === 'succeeded') {
             toast.success('Contact added Success')
@@ -35,7 +37,7 @@ export default function HomePage() {
         dispatch(fetchUsersDataRequest())
     }, [dispatch, addState])
 
-     // update note notification
+    // update note notification
     useEffect(() => {
         if (updateState.status === 'succeeded') {
             toast.success('Contact Updated Success')
@@ -50,16 +52,16 @@ export default function HomePage() {
     return (
         <>
             <LayOut>
-               
-                <Container sx={{pt:{xs:1,md:3,xl:5}}}>
-                    <Typography variant="h5" 
-                    pb={2}
-                    textAlign={{
-                        xs:'center',
-                        md:'start'
-                    }}
-                    fontWeight={"bold"}>Contacts List</Typography>
-                    <UsersTable />
+
+                <Container sx={{ pt: { xs: 1, md: 3, xl: 5 } }}>
+                    <Typography variant="h5"
+                        pb={2}
+                        textAlign={{
+                            xs: 'center',
+                            md: 'start'
+                        }}
+                        fontWeight={"bold"}>Contacts List</Typography>
+                    {contactsState.length ? <UsersTable />:<Typography variant="h6">You don't have any contact please add contact</Typography>}
                 </Container>
 
             </LayOut>
