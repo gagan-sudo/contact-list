@@ -1,23 +1,24 @@
 
-import { Formik, Form, FormikHelpers } from 'formik';
-import * as Yup from 'yup';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
-import { User } from '../utils/types';
-import {addDataRequest} from '../store/user/addcontact/userSlice'
-import { useDispatch } from 'react-redux';
-
+import { Formik, Form, FormikHelpers } from 'formik'
+import * as Yup from 'yup'
+import TextField from '@mui/material/TextField'
+import Button from '@mui/material/Button'
+import Box from '@mui/material/Box'
+import { User } from '../utils/types'
+import { useDispatch } from 'react-redux'
+import { addContactRequest } from '../store/user/addcontact/addSlice'
+import { updateContactRequest } from '../store/user/updatecontact/updateSlice'
 
 // interface FormValues {
-//   name: string;
-//   email: string;
-//   phone: string;
+//   name: string
+//   email: string
+//   phone: string
 //   address:string
 // }
 
-export default function UserForm({data}:{data:User}){
+export default function UserForm({data,action}:{data:User,action:'add'|'update'}){
    const dispatch = useDispatch()
+   
 
   const initialValues: User = {
     name: data.name,
@@ -25,7 +26,7 @@ export default function UserForm({data}:{data:User}){
     phone: data.phone,
     address:data.address,
     id:data.id
-  };
+  }
 
   
   const validationSchema = Yup.object({
@@ -35,19 +36,22 @@ export default function UserForm({data}:{data:User}){
       .matches(/^[0-9]{10}$/, 'Phone number must be exactly 10 digits')
       .required('Required'),
       address: Yup.string().required('Required'),
-  });
+  })
 
  
   const onSubmit = (
     values: User,
-    { setSubmitting }: FormikHelpers<User>
+    { setSubmitting,resetForm }: FormikHelpers<User>
   ) => {
-    // console.log('Form data', values);
-    dispatch(addDataRequest(values))
+   if(action==='add')
+    dispatch(addContactRequest(values))
+   else if(action==='update')
+    dispatch(updateContactRequest(values)) 
     setTimeout(() => {
-      setSubmitting(false);
-    }, 500);
-  };
+      setSubmitting(false)
+      resetForm()
+    }, 500)
+  }
 
   return (
     <Formik
@@ -71,6 +75,7 @@ export default function UserForm({data}:{data:User}){
             />
           </Box>
 
+          
           <Box mb={2}>
             <TextField
               fullWidth
@@ -114,11 +119,11 @@ export default function UserForm({data}:{data:User}){
 
           <Button color="primary" variant="contained" fullWidth type="submit" disabled={isSubmitting}
           >
-            Submit
+            {action} Contact
           </Button>
         </Form>
       )}
     </Formik>
-  );
-};
+  )
+}
 

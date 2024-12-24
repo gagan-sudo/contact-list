@@ -12,7 +12,7 @@ Where we can add, remove, or update contact in list
 git clone "https://github.com/gagan-sudo/contact-list.git"
 ```
 
-- change dir. 
+- Change Dir. 
 
 ```js
 cd contact-list

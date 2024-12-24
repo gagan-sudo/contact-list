@@ -1,10 +1,10 @@
 
-import API from "../../api/api";
+import API from "../../api/api"
 import {call, put, takeEvery} from 'redux-saga/effects'
 
-import { UsersDataActionTypes } from "./types";
-import { fetchUsersDataRequest, fetchUsersDataSuccess,fetchUsersDataFailure } from "./usersSlice";
-import { AnyAction } from "redux-saga";
+import { UsersDataActionTypes } from "./types"
+import { fetchUsersDataRequest, fetchUsersDataSuccess,fetchUsersDataFailure } from "./usersSlice"
+import { AnyAction } from "redux-saga"
 
 
 function* usersApiDataFetch(){

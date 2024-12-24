@@ -1,33 +1,36 @@
 
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import { Close, ContactPageOutlined } from '@mui/icons-material';
-import { toast } from 'react-toastify';
-import { Backdrop,  Stack } from '@mui/material';
-import { useState } from 'react';
-import UserForm from './UserForm';
-import { nanoid } from '@reduxjs/toolkit';
-const data = {
-  id: nanoid(4),
-  name: '',
-  email: '',
-  phone: '',
-  address: ''
-}
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Toolbar from '@mui/material/Toolbar'
+import Typography from '@mui/material/Typography'
+import Button from '@mui/material/Button'
+import IconButton from '@mui/material/IconButton'
+import { Close, ContactPageOutlined } from '@mui/icons-material'
+import { toast } from 'react-toastify'
+import { Backdrop,  Stack } from '@mui/material'
+import { useEffect, useState } from 'react'
+import UserForm from './UserForm'
+import { useSelector } from 'react-redux'
+import { AddState } from '../store/user/addcontact/addSlice'
+
 
 export default function Navigation() {
 
-  const [open, setOpen] = useState(false);
+  const addState = useSelector((state: { add: AddState }) => state.add)
+  const [open, setOpen] = useState(false)
+ 
+
+
   const handleClose = () => {
-    setOpen(false);
-  };
-  const handleOpen = () => {
-    setOpen(true);
+    setOpen(false)
   }
+  const handleOpen = () => {
+    setOpen(true)
+  }
+
+  useEffect(()=>{
+     setOpen(false)
+  },[addState])
 
   
   return (
@@ -71,10 +74,18 @@ export default function Navigation() {
       </Stack>
 
     {
-      <UserForm data={data}/>
+      <UserForm action={'add'} data={
+        {
+          id: '',
+          name: '',
+          email: '',
+          phone: '',
+          address: ''
+        }
+      }/>
     }
     </Box>
     </Backdrop>
 </>
-  );
+  )
 }

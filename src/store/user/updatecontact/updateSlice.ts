@@ -1,38 +1,39 @@
 
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { User } from '../../../utils/types'
 
 
 
 
-export  interface DeleteState {
+export  interface UpdateState {
   // items: User[]
   status: 'idle' | 'loading' | 'succeeded' | 'failed'
   error: string | null
 }
 
-const initialState: DeleteState = {
+const initialState: UpdateState = {
   // items: [],
   status: 'idle',
   error: null,
 }
 
-const deleteSlice = createSlice({
-  name: 'delete',
+const updateSlice = createSlice({
+  name: 'update',
   initialState,
   reducers: {
-    deleteContactRequest: (state, action: PayloadAction<string>) => {
+    updateContactRequest: (state, action: PayloadAction<User>) => {
       state.status = 'loading'
     },
-    deleteContactSuccess: (state, action: PayloadAction<string>) => {
+    updateContactSuccess: (state) => {
       state.status = 'succeeded'
       // state.items = state.items.filter(item => item.id !== action.payload)
     },
-    deleteContactFailure: (state, action: PayloadAction<string>) => {
+    updateContactFailure: (state, action: PayloadAction<string>) => {
       state.status = 'failed'
       state.error = action.payload
     },
   },
 })
 
-export const { deleteContactRequest, deleteContactSuccess, deleteContactFailure } = deleteSlice.actions
-export default deleteSlice.reducer
+export const { updateContactRequest, updateContactSuccess, updateContactFailure } = updateSlice.actions
+export default updateSlice.reducer
