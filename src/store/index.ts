@@ -1,1 +1,7 @@
 export {fetchUsersDataRequest,fetchUsersDataSuccess,fetchUsersDataFailure} from './users/usersSlice'
+export { updateContactRequest, updateContactSuccess, updateContactFailure } from './user/updatecontact/updateSlice'
+export type { UpdateState } from './user/updatecontact/updateSlice'
+export { deleteContactRequest, deleteContactSuccess, deleteContactFailure } from './user/deletecontact/deleteSlice'
+export type { DeleteState } from './user/deletecontact/deleteSlice'
+export { addContactRequest, addContactSuccess, addContactFailure } from './user/addcontact/addSlice'
+export type { AddState } from './user/addcontact/addSlice'

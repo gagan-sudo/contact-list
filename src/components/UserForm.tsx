@@ -6,8 +6,7 @@ import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import { User } from '../utils/types'
 import { useDispatch } from 'react-redux'
-import { addContactRequest } from '../store/user/addcontact/addSlice'
-import { updateContactRequest } from '../store/user/updatecontact/updateSlice'
+import { updateContactRequest,addContactRequest } from '../store'
 
 // interface FormValues {
 //   name: string

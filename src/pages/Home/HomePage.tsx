@@ -1,13 +1,10 @@
 import { useDispatch, useSelector } from "react-redux"
-import { fetchUsersDataRequest } from '../../store/users/usersSlice'
 import LayOut from "../../components/LayOut"
 import { useEffect } from "react"
 import { Grid2 } from "@mui/material"
 import UsersTable from "./UsersTable"
-import { DeleteState } from "../../store/user/deletecontact/deleteSlice"
 import { toast } from "react-toastify"
-import { AddState } from "../../store/user/addcontact/addSlice"
-import { UpdateState } from "../../store/user/updatecontact/updateSlice"
+import { UpdateState,AddState, DeleteState,fetchUsersDataRequest } from "../../store"
 
 export default function HomePage() {
 

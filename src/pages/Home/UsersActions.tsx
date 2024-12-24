@@ -6,7 +6,7 @@ import React, { ReactNode, useState } from 'react'
 import UserForm from '../../components/UserForm'
 import UserDetails from '../../components/UserDetails'
 import { useDispatch } from 'react-redux'
-import { deleteContactRequest } from '../../store/user/deletecontact/deleteSlice'
+import { deleteContactRequest } from '../../store'
 
 function UsersActions({ data }: { data: User }) {
 

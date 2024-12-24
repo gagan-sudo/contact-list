@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "name": "Gagan Bhangu",
+      "name": "Gagan ",
       "email": "gaganbhangu@gmail.com",
       "phone": "7059430004",
       "address": "Sahuwala",
@@ -41,13 +41,6 @@
       "address": "Sahuwala",
       "phone": "7059430004",
       "email": "gaganbhangu@gmail.com"
-    },
-    {
-      "name": "Gagan",
-      "email": "gaganbhangu@gmail.com",
-      "phone": "7059430004",
-      "address": "Sahuwala",
-      "id": "qQZq"
     }
   ]
 }
