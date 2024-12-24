@@ -9,26 +9,34 @@ Where we can add, remove, or update contact in list
 - Clone Repo.
 
 ```js
-git clone "https://github.com/gagan-sudo/contact-list.git"
+ git clone "https://github.com/gagan-sudo/contact-list.git"
 ```
 
 - Change Dir. 
 
-```js
-cd contact-list
-```
+ ```js
+  cd contact-list
+ ```
 
 - Install all dependencies
 
 ```js
-npm install
+ npm install
 ```
 
 - Run App in dev mode   
 
-```js
-npm run dev && npx json-server ./json/db.json
-```
+ ```js
+  npm run dev && npx json-server ./json/db.json
+ ```
+
+- Start static json server 
+  open a different terminal in `json` folder 
+
+  ```js
+   npx json-server ./db.json
+  ```
+
 
 ## Dependencies use in this project
 
