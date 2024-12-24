@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import LayOut from "../../components/LayOut"
 import { useEffect } from "react"
-import { Grid2 } from "@mui/material"
+import { Container,Typography } from "@mui/material"
 import UsersTable from "./UsersTable"
 import { toast } from "react-toastify"
 import { UpdateState,AddState, DeleteState,fetchUsersDataRequest } from "../../store"
@@ -51,9 +51,16 @@ export default function HomePage() {
         <>
             <LayOut>
                
-                <Grid2>
+                <Container sx={{pt:{xs:1,md:3,xl:5}}}>
+                    <Typography variant="h5" 
+                    pb={2}
+                    textAlign={{
+                        xs:'center',
+                        md:'start'
+                    }}
+                    fontWeight={"bold"}>Contacts List</Typography>
                     <UsersTable />
-                </Grid2>
+                </Container>
 
             </LayOut>
         </>
