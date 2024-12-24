@@ -24,10 +24,10 @@ cd contact-list
 npm install
 ```
 
-- Run App in dev mode 
+- Run App in dev mode   
 
 ```js
-npm run dev
+npm run dev && npx json-server ./json/db.json
 ```
 
 ## Dependencies use in this project
